@@ -1,0 +1,59 @@
+name: flutter_jobtest_noteapp
+description: "A new Flutter project."
+
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.4 <4.0.0"
+
+dependencies:
+  bloc: ^8.1.4
+  build_runner: ^2.4.9
+  cupertino_icons: ^1.0.6
+  dartz: ^0.10.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.5
+  freezed: ^2.5.2
+  freezed_annotation: ^2.4.1
+  http: ^1.2.1
+  intl: ^0.19.0
+  shared_preferences: ^2.2.3
+  sqflite: ^2.3.3
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
