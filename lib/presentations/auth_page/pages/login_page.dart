@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jobtest_noteapp/data/models/request/login_request_model.dart';
+
 import 'package:flutter_jobtest_noteapp/presentations/auth_page/pages/register_page.dart';
 import 'package:flutter_jobtest_noteapp/presentations/fitur_page.dart/homepage.dart';
 import '../../../common/components/button_widget.dart';
 import '../../../common/components/textfield_widget.dart';
-import '../bloc/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,7 +32,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Center(
             child: Column(
               children: [
-
                 const SizedBox(height: 90),
                 Image.asset(
                   'assets/login_icon.png',
@@ -64,7 +61,6 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: false,
                 ),
 
-
                 const SizedBox(
                   height: 10,
                 ),
@@ -85,70 +81,76 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 35.0),
-                BlocConsumer<LoginBloc, LoginState>(
-                  listener: (context, state) {
-                    state.maybeWhen(
-                      orElse: () {},
-                      succes: (data) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Login Berhasil',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 152, 252, 156),
-                          ),
-                        );
-                      },
-                      error: (error) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              error,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  builder: (context, state) {
+                // BlocConsumer<LoginBloc, LoginState>(
+                //   listener: (context, state) {
+                //     state.maybeWhen(
+                //       orElse: () {},
+                //       succes: (data) {
+                //         Navigator.pushReplacement(
+                //           context,
+                //           MaterialPageRoute(
+                //             builder: (context) => const HomePage(),
+                //           ),
+                //         );
+                //         ScaffoldMessenger.of(context).showSnackBar(
+                //           const SnackBar(
+                //             content: Text(
+                //               'Login Berhasil',
+                //               style: TextStyle(
+                //                   color: Colors.black,
+                //                   fontWeight: FontWeight.w700),
+                //             ),
+                //             backgroundColor: Color.fromARGB(255, 152, 252, 156),
+                //           ),
+                //         );
+                //       },
+                //       error: (error) {
+                //         ScaffoldMessenger.of(context).showSnackBar(
+                //           SnackBar(
+                //             content: Text(
+                //               error,
+                //               style: const TextStyle(
+                //                   color: Colors.black,
+                //                   fontWeight: FontWeight.w700),
+                //             ),
+                //             backgroundColor: Colors.red,
+                //           ),
+                //         );
+                //       },
+                //     );
+                //   },
+                //   builder: (context, state) {
 
-                    bool isLoading = state.maybeWhen(
-                      orElse: () => false,
-                      loading: () => true,
-                    );
+                //     bool isLoading = state.maybeWhen(
+                //       orElse: () => false,
+                //       loading: () => true,
+                //     );
 
-
-
-                    return isLoading
-                        ? const Center(
-                            child: CircularProgressIndicator(
-                            color: Colors.deepOrangeAccent,
-                          ))
-                        : LoginButton(
-                            onTap: () {
-                              final data = LoginRequestModel(
-                                  identifier: emailController.text,
-                                  password: passwordController.text);
-                              context
-                                  .read<LoginBloc>()
-                                  .add(LoginEvent.login(data));
-                            },
-                          );
-                  },
-                ),
+                //     return isLoading
+                //         ? const Center(
+                //             child: CircularProgressIndicator(
+                //             color: Colors.deepOrangeAccent,
+                //           ))
+                //         : LoginButton(
+                //             onTap: () {
+                //               final data = LoginRequestModel(
+                //                   identifier: emailController.text,
+                //                   password: passwordController.text);
+                //               context
+                //                   .read<LoginBloc>()
+                //                   .add(LoginEvent.login(data));
+                //             },
+                //           );
+                //   },
+                // ),
+                LoginButton(onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
+                }),
 
                 const SizedBox(height: 25),
                 Center(
